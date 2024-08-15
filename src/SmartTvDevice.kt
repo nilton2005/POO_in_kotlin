@@ -2,25 +2,25 @@ import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 class SmartTvDevice(deviceName: String, deviceCategory:String): SmartDevice(name = deviceName, category = deviceCategory){
 
-    private var speakerVolume by RangeRegulator(initialValue = 2, minValue = 0, maxValue = 100)
+    var speakerVolume by RangeRegulator(initialValue = 2, minValue = 0, maxValue = 100)
 
-    private var channelNumber by RangeRegulator(initialValue = 1, minValue = 0, maxValue = 200)
+    var channelNumber by RangeRegulator(initialValue = 1, minValue = 0, maxValue = 200)
 
     override val deviceType = "Smart TV"
 
-    fun increaseSpeakerVolume() {
+   fun increaseSpeakerVolume() {
         speakerVolume++
         println("Speaker volume increased to $speakerVolume.")
     }
 
-    fun nextChannel() {
+   fun nextChannel() {
         channelNumber++
         println("Channel number increased to $channelNumber.")
     }
-    private fun decreaseVolume(){
+    open fun decreaseVolume(){
         speakerVolume--
     }
-    private fun formerChannel(){
+    fun formerChannel(){
         channelNumber--
     }
     override fun turnOn() {
